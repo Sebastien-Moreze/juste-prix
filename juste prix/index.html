@@ -1,46 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="style.css" />
-    <title>juste prix</title>
+    <title>Le Juste Prix</title>
   </head>
   <body>
     <div class="container">
-  
       <div class="row justify-content-center mt-5">
-        <header>
+        <header class="animate__animated animate__bounce">
           Le Juste Prix
         </header>
       </div>
       
+      <!-- Statistiques -->
+      <div class="row justify-content-center mt-3">
+        <div class="col-lg-8">
+          <div class="stats bg-light p-3 shadow rounded">
+            <div class="row">
+              <div class="col">
+                <p>Tentatives : <span id="compteur-tentatives">0</span></p>
+              </div>
+              <div class="col">
+                <p>Meilleur score : <span id="meilleur-score">-</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Formulaire -->
-      <div class="row justify-content-center mt-5 mb-4">   
+      <div class="row justify-content-center mt-4 mb-4">   
         <div class="col-lg-8">   
-          <div class="bg-light p-5 shadow">
-            
+          <div class="bg-light p-5 shadow rounded">
             <form id="formulaire">
               <div class="row">
                 <div class="col">
-                  <input id="prix" class="form-control" placeholder="Devinez le prix ! (entre 0 et 1 000)" />
+                  <input id="prix" type="number" min="0" max="1000" class="form-control" placeholder="Devinez le prix ! (entre 0 et 1 000)" />
                 </div>
-                <button type="submit" class="btn btn-primary">Deviner</button>
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-primary">Deviner</button>
+                  <button type="button" id="nouvelle-partie" class="btn btn-secondary ml-2">Nouvelle partie</button>
+                </div>
               </div>
-              <small class="text-danger">Vous devez rentrer un nombre.</small>
+              <small class="text-danger" id="message-erreur"></small>
             </form>
-            
           </div>  
         </div>
       </div>
       
-      <!-- Instructions -->
+      <!-- Instructions et historique -->
       <div class="row justify-content-center">
-        <div id="instructions" class="col-lg-8"></div>
+        <div class="col-lg-8">
+          <div id="instructions" class="bg-dark p-4 rounded shadow"></div>
+          <div id="historique" class="mt-3"></div>
+        </div>
       </div>
-      
     </div>
     <script src="app.js"></script>
   </body>
